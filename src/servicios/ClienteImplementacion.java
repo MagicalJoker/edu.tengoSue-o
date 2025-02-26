@@ -15,22 +15,24 @@ public class ClienteImplementacion implements ClienteInterfaz {
 		sc.nextLine();
 		String nombreCompleto = sc.nextLine();
 
-		// Solicitar y validar el DNI | METODO ELIMINADO  Y SOLUCIONADO
+		// Solicitar y validar el DNI
 		System.out.println("Ingrese el DNI (8 dígitos + 1 letra): ");
 		String dniClienteString = sc.next();
 		if (!esDniValido(dniClienteString)) {
 			System.out.println("No se ha podido dar de alta al cliente. DNI inválido.");
 			return; // Salir del método si el DNI no es válido
+		} else {
+			System.out.println("DNI válido.");
 		}
-		
+
 		// Solicitar email al usuario
 		System.out.println("Ingrese su email");
 		String email = sc.next();
-		
+
 		// Solicitar contraseña al usuario
 		System.out.println("Ingrese la contraseña de su email");
 		String contraseña = sc.next();
-		
+
 		// Separar nombre y apellido
 		String[] partesNombre = nombreCompleto.split(" ", 3);
 		String nombre = partesNombre[0];
@@ -46,8 +48,9 @@ public class ClienteImplementacion implements ClienteInterfaz {
 		nuevoCliente.setEmailCliente(email);
 		nuevoCliente.setContraseñaCliente(contraseña);
 		nuevoCliente.setEsValidado(false);
-		
+
 		Inicio.listaClientes.add(nuevoCliente);
+		System.out.println("Cliente creado exitosamente.");
 	}
 
 	private long generarNuevoId() {
